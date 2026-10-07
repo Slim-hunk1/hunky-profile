@@ -10,6 +10,7 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f9f9f9;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Hero */
@@ -17,6 +18,7 @@ body {
   text-align: center;
   padding: 60px 20px;
   background-color: #e8e8e8;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .profile-img {
@@ -42,6 +44,7 @@ section {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 section h2 {
@@ -49,6 +52,7 @@ section h2 {
   margin-bottom: 16px;
   border-bottom: 2px solid #ccc;
   padding-bottom: 8px;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Skills */
@@ -64,6 +68,7 @@ section h2 {
   padding: 8px 14px;
   border-radius: 6px;
   font-size: 0.95rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Projects */
@@ -73,6 +78,7 @@ section h2 {
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .project-card h3 {
@@ -105,6 +111,7 @@ footer {
   background-color: #e8e8e8;
   color: #666;
   font-size: 0.9rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Certifications / Badges */
@@ -151,4 +158,114 @@ footer {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* ===== Dark Mode Toggle Button ===== */
+.theme-toggle {
+  display: none;
+}
+
+.theme-toggle-label {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    border-color 0.3s ease;
+  user-select: none;
+}
+
+.theme-toggle-label:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle-label .sun,
+.theme-toggle-label .moon {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle-label .moon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+/* ===== Dark Mode ===== */
+
+/* Body */
+.theme-toggle:checked ~ .hero,
+.theme-toggle:checked ~ section,
+.theme-toggle:checked ~ footer {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.theme-toggle:checked ~ .hero {
+  background-color: #111;
+}
+
+.theme-toggle:checked ~ footer {
+  background-color: #111;
+  color: #888;
+}
+
+/* Headings borders */
+.theme-toggle:checked ~ section h2 {
+  border-bottom-color: #444;
+  color: #f0f0f0;
+}
+
+/* Tagline and muted text */
+.theme-toggle:checked ~ .hero .tagline {
+  color: #aaa;
+}
+
+/* Skill pills */
+.theme-toggle:checked ~ .skills li {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+/* Project cards */
+.theme-toggle:checked ~ .projects .project-card {
+  background-color: #222;
+  border-color: #333;
+}
+
+/* Links */
+.theme-toggle:checked ~ section a {
+  color: #6cb2ff;
+}
+
+/* Toggle button itself */
+.theme-toggle:checked ~ .theme-toggle-label {
+  background-color: #222;
+  border-color: #444;
+}
+
+.theme-toggle:checked ~ .theme-toggle-label .sun {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.theme-toggle:checked ~ .theme-toggle-label .moon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Body itself needs to go dark too */
+body:has(.theme-toggle:checked) {
+  background-color: #111;
+  color: #e0e0e0;
 }
