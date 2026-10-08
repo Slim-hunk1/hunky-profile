@@ -6,19 +6,45 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f9f9f9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Hero */
 .hero {
+  position: relative;
+  overflow: hidden;
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 24px 60px;
   background-color: #e8e8e8;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(108, 178, 255, 0.25),
+    transparent 70%
+  );
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .profile-img {
@@ -26,32 +52,38 @@ body {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
 }
 
 .hero h1 {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
 
 .tagline {
   color: #666;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 400;
 }
 
 /* Sections */
 section {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 24px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 section h2 {
-  font-size: 1.6rem;
-  margin-bottom: 16px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
   border-bottom: 2px solid #ccc;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 
@@ -64,21 +96,96 @@ section h2 {
 }
 
 .skills li {
-  background-color: #ddd;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    transform 0.2s ease, box-shadow 0.25s ease, border-color 0.3s ease;
+}
+
+.skills li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Skill Brand Colors (Light Mode) ===== */
+.skill-html {
+  background-color: #ffe9d6;
+  color: #c4501a;
+  border-color: #ffd3b3;
+}
+
+.skill-css {
+  background-color: #dbe9ff;
+  color: #1a4ec4;
+  border-color: #bcd4ff;
+}
+
+.skill-java {
+  background-color: #ffe2d6;
+  color: #b03a1a;
+  border-color: #ffc7b3;
+}
+
+.skill-r {
+  background-color: #d6e8ff;
+  color: #1a5c9e;
+  border-color: #b3d3ff;
+}
+
+.skill-python {
+  background-color: #fff3cc;
+  color: #8a6a00;
+  border-color: #ffe894;
+}
+
+.skill-azure {
+  background-color: #d6ecff;
+  color: #0078d4;
+  border-color: #a8d5ff;
+}
+
+.skill-sql {
+  background-color: #e0e0f5;
+  color: #3d3d8a;
+  border-color: #c2c2e8;
+}
+
+.skill-figma {
+  background-color: #f3e0f7;
+  color: #a259c9;
+  border-color: #e5c2f0;
+}
+
+.skill-tableau {
+  background-color: #fde0e0;
+  color: #c0392b;
+  border-color: #f7bcbc;
+}
+
+.skill-git {
+  background-color: #f0e0d6;
+  color: #c4501a;
+  border-color: #e0c2b3;
 }
 
 /* Projects */
 .project-card {
+  position: relative;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .project-card h3 {
@@ -120,6 +227,20 @@ footer {
   width: 100%;
   position: relative;
   padding: 10px 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
 }
 
 .badges-track {
@@ -146,7 +267,6 @@ footer {
   display: block;
 }
 
-/* Pause scrolling when hovering the whole strip */
 .badges-scroll:hover .badges-track {
   animation-play-state: paused;
 }
@@ -203,69 +323,328 @@ footer {
 
 /* ===== Dark Mode ===== */
 
-/* Body */
-.theme-toggle:checked ~ .hero,
-.theme-toggle:checked ~ section,
-.theme-toggle:checked ~ footer {
+html[data-theme="dark"] body,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] section,
+html[data-theme="dark"] footer {
   background-color: #1a1a1a;
   color: #e0e0e0;
 }
 
-.theme-toggle:checked ~ .hero {
+html[data-theme="dark"] body,
+html[data-theme="dark"] .hero {
   background-color: #111;
 }
 
-.theme-toggle:checked ~ footer {
+html[data-theme="dark"] footer {
   background-color: #111;
   color: #888;
 }
 
-/* Headings borders */
-.theme-toggle:checked ~ section h2 {
+html[data-theme="dark"] section h2 {
   border-bottom-color: #444;
   color: #f0f0f0;
 }
 
-/* Tagline and muted text */
-.theme-toggle:checked ~ .hero .tagline {
+html[data-theme="dark"] .hero .tagline {
   color: #aaa;
 }
 
-/* Skill pills */
-.theme-toggle:checked ~ .skills li {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-}
-
-/* Project cards */
-.theme-toggle:checked ~ .projects .project-card {
+html[data-theme="dark"] .projects .project-card {
   background-color: #222;
   border-color: #333;
 }
 
-/* Links */
-.theme-toggle:checked ~ section a {
+html[data-theme="dark"] .project-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+html[data-theme="dark"] section a {
   color: #6cb2ff;
 }
 
-/* Toggle button itself */
-.theme-toggle:checked ~ .theme-toggle-label {
+html[data-theme="dark"] .theme-toggle-label {
   background-color: #222;
   border-color: #444;
 }
 
-.theme-toggle:checked ~ .theme-toggle-label .sun {
+html[data-theme="dark"] .theme-toggle-label .sun {
   opacity: 0;
   transform: rotate(90deg);
 }
 
-.theme-toggle:checked ~ .theme-toggle-label .moon {
+html[data-theme="dark"] .theme-toggle-label .moon {
   opacity: 1;
   transform: rotate(0deg);
 }
 
-/* Body itself needs to go dark too */
-body:has(.theme-toggle:checked) {
-  background-color: #111;
-  color: #e0e0e0;
+/* ===== Skill Brand Colors (Dark Mode) ===== */
+html[data-theme="dark"] .skill-html {
+  background-color: #3a2010;
+  color: #ff9a5c;
+  border-color: #5a3018;
+}
+
+html[data-theme="dark"] .skill-css {
+  background-color: #102040;
+  color: #6cb2ff;
+  border-color: #1a3060;
+}
+
+html[data-theme="dark"] .skill-java {
+  background-color: #3a1810;
+  color: #ff8b6b;
+  border-color: #5a2418;
+}
+
+html[data-theme="dark"] .skill-r {
+  background-color: #102040;
+  color: #7ab8ff;
+  border-color: #1a3060;
+}
+
+html[data-theme="dark"] .skill-python {
+  background-color: #3a3010;
+  color: #ffd966;
+  border-color: #5a4818;
+}
+
+html[data-theme="dark"] .skill-azure {
+  background-color: #0a2038;
+  color: #4cb3ff;
+  border-color: #143a5c;
+}
+
+html[data-theme="dark"] .skill-sql {
+  background-color: #1f1f3a;
+  color: #a0a0e0;
+  border-color: #30305a;
+}
+
+html[data-theme="dark"] .skill-figma {
+  background-color: #2f1a3a;
+  color: #d18cff;
+  border-color: #452a5c;
+}
+
+html[data-theme="dark"] .skill-tableau {
+  background-color: #3a1818;
+  color: #ff7a7a;
+  border-color: #5a2828;
+}
+
+html[data-theme="dark"] .skill-git {
+  background-color: #3a2418;
+  color: #ff9a5c;
+  border-color: #5a3a28;
+}
+
+/* ===== Scroll Fade-in Animation ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  section {
+    animation: fadeInUp 0.8s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+}
+
+/* ===== Responsive / Mobile ===== */
+@media (max-width: 640px) {
+  .hero {
+    padding: 60px 16px 40px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 40px 16px;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+
+  .theme-toggle-label {
+    top: 14px;
+    right: 14px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .badges-track img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .badges-track {
+    gap: 16px;
+    animation-duration: 30s;
+  }
+}
+
+/* ===== Floating Background Orbs ===== */
+.orb-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(108, 178, 255, 0.45),
+    rgba(108, 178, 255, 0.12) 60%,
+    transparent 78%
+  );
+  filter: blur(50px);
+  opacity: 0.35;
+  animation: orbFloat 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 220px;
+  height: 220px;
+  top: 12%;
+  left: -70px;
+  animation-duration: 22s;
+  animation-delay: -2s;
+}
+
+.orb-2 {
+  width: 180px;
+  height: 180px;
+  top: 50%;
+  right: -80px;
+  animation-duration: 28s;
+  animation-delay: -8s;
+}
+
+.orb-3 {
+  width: 160px;
+  height: 160px;
+  bottom: 12%;
+  left: 12%;
+  animation-duration: 24s;
+  animation-delay: -14s;
+}
+
+.orb-4 {
+  width: 140px;
+  height: 140px;
+  top: 22%;
+  right: 22%;
+  animation-duration: 32s;
+  animation-delay: -5s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -25px) scale(1.05);
+  }
+  50% {
+    transform: translate(-15px, 15px) scale(0.97);
+  }
+  75% {
+    transform: translate(10px, 20px) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Slightly brighter in dark mode */
+html[data-theme="dark"] .orb {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(108, 178, 255, 0.6),
+    rgba(108, 178, 255, 0.18) 60%,
+    transparent 78%
+  );
+  opacity: 0.4;
+}
+
+/* Scroll parallax — orbs drift as you scroll (modern browsers) */
+@supports (animation-timeline: scroll()) {
+  .orb-1 {
+    animation: orbFloat 22s ease-in-out infinite,
+      orbScroll1 linear both;
+    animation-timeline: auto, scroll(root block);
+  }
+
+  .orb-2 {
+    animation: orbFloat 28s ease-in-out infinite,
+      orbScroll2 linear both;
+    animation-timeline: auto, scroll(root block);
+  }
+
+  .orb-3 {
+    animation: orbFloat 24s ease-in-out infinite,
+      orbScroll3 linear both;
+    animation-timeline: auto, scroll(root block);
+  }
+
+  .orb-4 {
+    animation: orbFloat 32s ease-in-out infinite,
+      orbScroll4 linear both;
+    animation-timeline: auto, scroll(root block);
+  }
+
+  @keyframes orbScroll1 {
+    from { translate: 0 0; }
+    to   { translate: 0 200px; }
+  }
+
+  @keyframes orbScroll2 {
+    from { translate: 0 0; }
+    to   { translate: 0 -180px; }
+  }
+
+  @keyframes orbScroll3 {
+    from { translate: 0 0; }
+    to   { translate: 0 260px; }
+  }
+
+  @keyframes orbScroll4 {
+    from { translate: 0 0; }
+    to   { translate: 0 -220px; }
+  }
+}
+
+/* Make sure content sits above the orbs — but don't break fixed elements */
+body > .hero,
+body > section,
+body > footer {
+  position: relative;
+  z-index: 1;
 }
